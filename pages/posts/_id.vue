@@ -1,3 +1,5 @@
+ 2.42 KB
+  
 <template>
   <section class="hero">
     <div class="hero-body">
@@ -17,8 +19,6 @@
                 <h2 class="subtitle is-4">
                   {{ formatDate(post.publicationDate) }}
                 </h2>
-                <h1>{{post.author.name}}</h1>
-                <h1>{{post.category}}</h1>
                 <h1 class="title">
                   <nuxt-link :to="`/posts/${post.slug}`">{{
                     post.title
@@ -39,7 +39,6 @@ import { request, gql, imageFields, seoMetaTagsFields } from '~/lib/datocms'
 import { toHead } from 'vue-datocms'
 import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
-
 export default {
   async asyncData({ params }) {
     const data = await request({
@@ -50,24 +49,19 @@ export default {
               ...seoMetaTagsFields
             }
           }
-
           post(filter: { slug: { eq: $slug } }) {
             seo: _seoMetaTags {
               ...seoMetaTagsFields
-           }
-           id
+            }
+            id
             title
             slug
-            
             publicationDate: _firstPublishedAt
             content
             coverImage {
               responsiveImage(imgixParams: { fit: crop, ar: "16:9", w: 860 }) {
                 ...imageFields
               }
-            }
-            category {
-            name
             }
             author {
               name
@@ -79,7 +73,6 @@ export default {
             }
           }
         }
-
         ${imageFields}
         ${seoMetaTagsFields}
       `,
@@ -87,7 +80,6 @@ export default {
         slug: params.id
       }
     })
-
     return { ready: !!data, ...data }
   },
   methods: {
@@ -99,7 +91,6 @@ export default {
     if (!this.ready) {
       return
     }
-
     return toHead(this.post.seo, this.site.favicon)
   }
 }

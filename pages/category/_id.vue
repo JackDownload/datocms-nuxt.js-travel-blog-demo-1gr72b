@@ -5,7 +5,7 @@
         <div class="columns">
           <div class="column is-8 is-offset-2">
             <figure class="image">
-              <datocms-image :data="post.coverImage.responsiveImage" />
+              <datocms-image :data="category.coverImage.responsiveImage" />
             </figure>
           </div>
         </div>
@@ -15,16 +15,15 @@
             <div class="column is-8 is-offset-2">
               <div class="content is-medium">
                 <h2 class="subtitle is-4">
-                  {{ formatDate(post.publicationDate) }}
+                  {{ formatDate(category.publicationDate) }}
                 </h2>
-                <h1>{{post.author.name}}</h1>
-                <h1>{{post.category}}</h1>
+                <h1>{{category.title}}</h1>
                 <h1 class="title">
-                  <nuxt-link :to="`/posts/${post.slug}`">{{
-                    post.title
+                  <nuxt-link :to="`/category/${category.slug}`">{{
+                    category.title
                   }}</nuxt-link>
                 </h1>
-                <div v-html="post.content" />
+                <div v-html="category.content" />
               </div>
             </div>
           </div>
@@ -51,32 +50,13 @@ export default {
             }
           }
 
-          post(filter: { slug: { eq: $slug } }) {
+          category(filter: { slug: { eq: $slug } }) {
             seo: _seoMetaTags {
               ...seoMetaTagsFields
            }
            id
             title
             slug
-            
-            publicationDate: _firstPublishedAt
-            content
-            coverImage {
-              responsiveImage(imgixParams: { fit: crop, ar: "16:9", w: 860 }) {
-                ...imageFields
-              }
-            }
-            category {
-            name
-            }
-            author {
-              name
-              picture {
-                responsiveImage(imgixParams: { fit: crop, ar: "1:1", w: 40 }) {
-                  ...imageFields
-                }
-              }
-            }
           }
         }
 
@@ -100,7 +80,7 @@ export default {
       return
     }
 
-    return toHead(this.post.seo, this.site.favicon)
+    return toHead(this.category.seo, this.site.favicon)
   }
 }
 </script>
