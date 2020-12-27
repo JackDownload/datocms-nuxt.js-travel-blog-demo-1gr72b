@@ -57,6 +57,12 @@ export default {
            id
             title
             slug
+            content
+            coverImage {
+              responsiveImage(imgixParams: { fit: crop, ar: "16:9", w: 860 }) {
+                ...imageFields
+              }
+            }
           }
         }
 
