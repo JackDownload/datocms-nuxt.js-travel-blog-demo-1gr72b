@@ -54,9 +54,11 @@ export default {
           post(filter: { slug: { eq: $slug } }) {
             seo: _seoMetaTags {
               ...seoMetaTagsFields
+           }
            id
             title
             slug
+            
             publicationDate: _firstPublishedAt
             content
             coverImage {
