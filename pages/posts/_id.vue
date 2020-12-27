@@ -59,11 +59,15 @@ export default {
             slug
             publicationDate: _firstPublishedAt
             content
+            category
             coverImage {
               responsiveImage(imgixParams: { fit: crop, ar: "16:9", w: 860 }) {
                 ...imageFields
               }
             }
+            category {
+              name
+              }
             author {
               name
               picture {
