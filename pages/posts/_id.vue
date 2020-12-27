@@ -19,7 +19,6 @@
                 </h2>
                 <h1>{{post.author.name}}</h1>
                 <h1>{{post.category}}</h1>
-                <h1>{{post.category.name}}</h1>
                 <h1 class="title">
                   <nuxt-link :to="`/posts/${post.slug}`">{{
                     post.title
@@ -55,20 +54,18 @@ export default {
           post(filter: { slug: { eq: $slug } }) {
             seo: _seoMetaTags {
               ...seoMetaTagsFields
-            }
-            id
+           id
             title
             slug
             publicationDate: _firstPublishedAt
             content
-          category {
-            name
-            slug
-            }
             coverImage {
               responsiveImage(imgixParams: { fit: crop, ar: "16:9", w: 860 }) {
                 ...imageFields
               }
+            }
+            category {
+            name
             }
             author {
               name
