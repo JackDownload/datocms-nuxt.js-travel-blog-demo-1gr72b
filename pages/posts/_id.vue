@@ -17,7 +17,7 @@
                 <h2 class="subtitle is-4">
                   {{ formatDate(post.publicationDate) }}
                 </h2>
-                <h1>{{post.slug}}</h1>
+                <h1>{{post.category}}</h1>
                 <h1 class="title">
                   <nuxt-link :to="`/posts/${post.slug}`">{{
                     post.title
@@ -40,7 +40,7 @@ import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 
 export default {
-  async asyncData({ params }) {
+  async asyncData({ params }) {s
     const data = await request({
       query: gql`
         query BlogPostQuery($slug: String!) {
