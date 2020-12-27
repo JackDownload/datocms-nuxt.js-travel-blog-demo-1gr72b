@@ -17,7 +17,8 @@
                 <h2 class="subtitle is-4">
                   {{ formatDate(post.publicationDate) }}
                 </h2>
-                <h1>{{post.author}}</h1>
+                <h1>{{post.author.name}}</h1>
+                <h1>{{post.author.category}}</h1>
                 <h1 class="title">
                   <nuxt-link :to="`/posts/${post.slug}`">{{
                     post.title
