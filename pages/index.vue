@@ -3,7 +3,7 @@
     <section class="hero">
       <div class="hero-body">
         <div class="container">
-          <div v-for="category in categorys.slice(0, 2)" v-bind:key="category.slug">
+          <div v-for="category in categories.slice(0, 2)" v-bind:key="category.slug">
             <div class="columns">
               <div class="column is-8 is-offset-2">
                 <figure class="image">
@@ -17,7 +17,7 @@
                 <div class="column is-8 is-offset-2">
                   <div class="content is-medium">
                     <h1 class="title">
-                      <nuxt-link :to="`/categorys/${category.slug}`">{{
+                      <nuxt-link :to="`/categories/${category.slug}`">{{
                         category.title
                       }}</nuxt-link>
                     </h1>
@@ -70,19 +70,19 @@
       <div class="hero-body">
         <div class="container">
           <div
-            v-for="group in Math.ceil((categorys.length - 2) / 2)"
+            v-for="group in Math.ceil((categories.length - 2) / 2)"
             v-bind:key="group"
           >
             <section class="section">
               <div class="columns is-variable is-8">
                 <div
-                  v-for="(category, index) in categorys.slice(group * 2, group * 2 + 2)"
+                  v-for="(category, index) in categories.slice(group * 2, group * 2 + 2)"
                   v-bind:key="category.slug"
                   :class="['column is-5', index === 0 && 'is-offset-1']"
                 >
                   <div class="content is-medium">
                     <h1 class="title has-text-black is-3">
-                      <nuxt-link :to="`/categorys/${category.slug}`">{{
+                      <nuxt-link :to="`/categories/${category.slug}`">{{
                         category.title
                       }}</nuxt-link>
                     </h1>
@@ -117,7 +117,7 @@ export default {
             }
           }
 
-          categorys: allCategorys(first: 10) {
+          categories: allCategories(first: 10) {
             id
             title
             slug
