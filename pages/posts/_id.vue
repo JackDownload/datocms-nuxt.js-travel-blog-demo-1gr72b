@@ -17,17 +17,12 @@
                 <h2 class="subtitle is-4">
                   {{ formatDate(post.publicationDate) }}
                 </h2>
+                <h1>{{post.category}}</h1>
                 <h1 class="title">
                   <nuxt-link :to="`/posts/${post.slug}`">{{
                     post.title
                   }}</nuxt-link>
                 </h1>
-                 <h1 class="category">
-                  <nuxt-link :to="`/posts/${post.slug}`">{{
-                    post.category
-                  }}</nuxt-link>
-                </h1>
-                category
                 <div v-html="post.content" />
               </div>
             </div>
