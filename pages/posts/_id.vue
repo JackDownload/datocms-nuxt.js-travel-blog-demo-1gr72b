@@ -40,7 +40,7 @@ import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 
 export default {
-  async asyncData({ params }) {s
+  async asyncData({ params }) {
     const data = await request({
       query: gql`
         query BlogPostQuery($slug: String!) {
