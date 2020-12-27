@@ -17,7 +17,7 @@
                 <h2 class="subtitle is-4">
                   {{ formatDate(post.publicationDate) }}
                 </h2>
-                <h1>{{post.category}}</h1>
+                <h1>{{post.author}}</h1>
                 <h1 class="title">
                   <nuxt-link :to="`/posts/${post.slug}`">{{
                     post.title
@@ -59,7 +59,6 @@ export default {
             slug
             publicationDate: _firstPublishedAt
             content
-            category
             coverImage {
               responsiveImage(imgixParams: { fit: crop, ar: "16:9", w: 860 }) {
                 ...imageFields
