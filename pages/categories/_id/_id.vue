@@ -14,9 +14,6 @@
           <div class="columns">
             <div class="column is-8 is-offset-2">
               <div class="content is-medium">
-                <h2 class="subtitle is-4">
-                  {{ formatDate(category.publicationDate) }}
-                </h2>
                 <h1>{{category.title}}</h1>
                 <h1 class="title">
                   <nuxt-link :to="`/category/${category.slug}`">{{
@@ -43,7 +40,7 @@ export default {
   async asyncData({ params }) {
     const data = await request({
       query: gql`
-        query BlogPostQuery($slug: String!) {
+        query BlogCategoryQuery($slug: String!) {
           site: _site {
             favicon: faviconMetaTags {
               ...seoMetaTagsFields
